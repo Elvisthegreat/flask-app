@@ -5,7 +5,7 @@ from flask import Flask, render_template # The render_template function is used 
 app = Flask(__name__)
 
 @app.route("/")
-def imdex():
+def index():
     return render_template("index.html")
 
 
