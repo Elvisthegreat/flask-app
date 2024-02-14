@@ -1,4 +1,5 @@
 import os # A portable way of interacting
+import json
 from flask import Flask, render_template # The render_template function is used to render HTML templates
 
 
@@ -11,7 +12,11 @@ def index():
 
 @app.route("/about")
 def about():
-    return render_template("about.html", page_title="About", list_of_numbers=[1,2,3]) # Expression to display about.html on page from backend to frontend
+    data = []
+    # Open the json file as "r" read-only and assign the content json_data
+    with open("data/company.json", "r") as json_data: # Open the JSON file in order to read it.
+        data = json.load(json_data)
+    return render_template("about.html", page_title="About", company=data) # Expression to display about.html on page from backend to frontend
 
 
 @app.route("/contact")
