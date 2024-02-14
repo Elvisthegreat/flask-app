@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
    
-        {{ list_of_numbers }}
+        {% for number in list_of_numbers %}
+            <p>{{ number }}</p>
+        {% endfor %}
+
         <!--Our run.py page_title="About" will make this display in our page base on the value pass to it-->
     <h2>{{ page_title }}</h2>
     <p>
