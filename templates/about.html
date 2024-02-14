@@ -14,24 +14,52 @@
         business, welcomed a fourteenth to fill into their party.
     </p>
        
-    <!--Getting the company from our run.py file-->
+    <!--For Loop. Getting the company from our run.py file-->
     {% for member in company %}
 
     <div class="row featurette">
+        
+        {% if loop.index % 2 != 0 %} <!--Loop through the indexes of the images-->
+
         <div class="col-md-7">
-            <h3>{{ member.name }}</h3>
-
+            <!--Iterate through all object name in company.json file-->
+            <!--This will now display the text on the left and image on the right, if it's an odd loop.index
+            number (1, 3, 5, etc.).-->
+            <h3>{{ loop.index }}. {{ member.name }}</h3>
+            <!--Iterate through all object description in company.json file-->
             <p>{{ member.description }}</p>
-
         </div>
         <div class="col-md-5">
             <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
         </div>
+
+        {% else %}
+
+        <!--But it will display the image on the left, and the text on the right, if it's an even
+        loop.index number (2, 4, 6, etc.).-->
+        <div class="col-md-5">
+            <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+        </div>
+
+        <div class="col-md-7">
+            <!--This will now display the text on the left and image on the right, if it's an odd loop.index
+            number (1, 3, 5, etc.).-->
+            <h3>{{ loop.index }}. {{ member.name }}</h3>
+    
+            <!--This will now display the text on the left and image on the right, if it's an odd loop.index
+            number (1, 3, 5, etc.).-->
+            <p>{{ member.description }}</p>
+    
+        </div>
+
+        {% endif %}
     </div>
      
-    <!--Create spaces between image during for loop iteration-->
-    <hr class="featurette divider"> <!--This is provider by the clean-blog template-->
-
+        {% if loop.index != loop.length %}
+            <!--Create horizontal line between image during for loop iteration-->
+            <hr class="featurette divider"> <!--This is provider by the clean-blog template-->
+        {% endif %}
+    
     {% endfor %}
 
 {% endblock %}
