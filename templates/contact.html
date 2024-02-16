@@ -7,7 +7,7 @@
         <div class="col-lg-8 col-md-10 mx-auto">
               
             <!--If statement and for loop to retrieve and display our message-->
-            {% with messages = get_flashed_messages() %} <!--Retrieve the flashed messages.-->
+            {% with messages = get_flashed_messages() %} <!--Retrieve the flashed messages-->
                 {% if messages %}
                     <ul class="flashes">
                         {% for message in messages %}
